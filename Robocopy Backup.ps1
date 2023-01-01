@@ -1,17 +1,20 @@
-﻿#Requires -Version 5.0
+#Requires -Version 5.0
 
 ###############################################################################################################################
 #                                                                                                                             #
 #  Powershell Script to backup files to a folder with current timestamp using Robocopy                                        #
+#                                                                                                                             #
+#  DISCLAIMER: THIS CODE IS PROVIDED FREE OF CHARGE. UNDER NO CIRCUMSTANCES SHALL I HAVE ANY LIABILITY TO YOU FOR ANY LOSS    #
+#  OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THIS CODE. YOUR USE OF THIS CODE IS SOLELY AT YOUR OWN RISK.      #
 #                                                                                                                             #
 #  By Silvalined 2021                                                                                                         #
 #                                                                                                                             #
 ###############################################################################################################################
 
 ###############################################################################################################################
-### Version History																											###
+### Version History                                                                                                         ###
 ###############################################################################################################################
-# 1.0 : 10/10/2021 : First release                  																		  #
+# 1.0 : 10/10/2021 : First release                                                                                            #
 # 1.1 : 05/01/2022 : Amended script so it can backup multiple source directories.                                             #
 #                    Added logic to be able to handle multiple new backup destinations with the same name.                    #
 # 1.2 : 11/02/2022 : Overhaul of Robocopy commands.                                                                           #
@@ -24,7 +27,7 @@
 ###############################################################################################################################
 
 ###############################################################################################################################
-### Adjustable Variables         																							###
+### Adjustable Variables                                                                                                    ###
 ###############################################################################################################################
 
 # If backing up from local then just set to '', otherwise input the name of the remote server hosting the source directory.
@@ -37,6 +40,7 @@ $sourceDirs = @(
     '\\ServerName\Share\FolderName2',
     '\\ServerName\Share\FolderName3'
 )
+
 # If backing up to local then just set to '', otherwise input the name of the remote server hosting the destination directory:
 $destinationClient = 'ServerName'
 # The root destination directory. Timestamped folders will appear under here.
@@ -70,7 +74,7 @@ $dateTime = Get-Date -Format "yy-MM-dd HH-mm-ss"
 ###############################################################################################################################
 
 ###############################################################################################################################
-### Main Script - DO NOT CHANGE BELOW HERE   																				###
+### Main Script - DO NOT CHANGE BELOW HERE                                                                                  ###
 ###############################################################################################################################
 
 ###############################################################################################################################
@@ -262,8 +266,6 @@ try {
         }
 
     }
-
-
 
 }
 finally {
